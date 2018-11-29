@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "session_id": "ss5elds3lle4g2dl",
+    "user_id": 1,
+    "expired_time": 1534343962.6741638
+  },
+  {
+    "id": 1,
+    "session_id": "l2e5lse2lgg55elg",
+    "user_id": 1,
+    "expired_time": 1534345430.5363097
+  },
+  {
+    "id": 2,
+    "session_id": "l222j53db4jgsge2",
+    "user_id": 2,
+    "expired_time": 1534426979.209764
+  },
+  {
+    "id": 3,
+    "session_id": "e3jd34ekg5eesl2j",
+    "user_id": 2,
+    "expired_time": 1534434338.049599
+  }
+]
