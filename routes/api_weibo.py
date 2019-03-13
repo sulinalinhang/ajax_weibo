@@ -57,8 +57,6 @@ def comment_owner_required(route_function):
     return f
 
 bp = Blueprint('api_weibo', __name__)
-# 本文件只返回 json 格式的数据
-# 而不是 html 格式的数据
 @bp.route('/api/weibo/all', methods=['GET'])
 @login_required
 def all():
@@ -80,8 +78,6 @@ def all():
 @bp.route('/api/weibo/add', methods=['POST'])
 @login_required
 def add():
-    # 得到浏览器发送的表单, 浏览器用 ajax 发送 json 格式的数据过来
-    # 所以这里我们用新增加的 json 函数来获取格式化后的 json 数据
     form = request.get_json()
     u = current_user()
     form['user_id'] = u.id
@@ -111,9 +107,6 @@ def delete():
 @login_required
 @weibo_owner_required
 def update():
-    """
-    用于增加新 todo 的路由函数
-    """
     form = request.get_json()
     id = form['id']
     content = form['content']
@@ -148,9 +141,6 @@ def comment_delete():
 @login_required
 @comment_owner_required
 def comment_update():
-    """
-    用于增加新 todo 的路由函数
-    """
     form = request.get_json()
     log('api todo update form', form)
     c = Comment.comment_update(form)

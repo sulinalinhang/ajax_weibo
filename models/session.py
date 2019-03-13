@@ -6,9 +6,6 @@ from utils import log
 
 
 class Session(SQLModel):
-    """
-    Session 是用来保存 session 的 model
-    """
     sql_create = '''
     CREATE TABLE `session` (
         `id` INT NOT NULL AUTO_INCREMENT,

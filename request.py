@@ -3,10 +3,8 @@ from utils import log
 import json
 
 
-# 定义一个 class 用于保存请求的数据
 class Request(object):
     def __init__(self, raw_data):
-        # 只能 split 一次，因为 body 中可能有换行
         header, self.body = raw_data.split('\r\n\r\n', 1)
         h = header.split('\r\n')
 
@@ -24,9 +22,6 @@ class Request(object):
         log('Request: headers 和 cookies', self.headers, self.cookies)
 
     def add_headers(self, header):
-        """
-        Cookie: user=gua
-        """
         lines = header
         for line in lines:
             k, v = line.split(': ', 1)
@@ -51,14 +46,6 @@ class Request(object):
         return f
 
     def parse_path(self, path):
-        """
-        输入: /gua?message=hello&author=gua
-        返回
-        (gua, {
-            'message': 'hello',
-            'author': 'gua',
-        })
-        """
         index = path.find('?')
         if index == -1:
             self.path = path
@@ -74,7 +61,4 @@ class Request(object):
             self.query = query
 
     def json(self):
-        """
-        把 body 中的 json 格式字符串解析成 dict 或者 list 并返回
-        """
         return json.loads(self.body)

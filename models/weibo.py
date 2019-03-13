@@ -4,9 +4,6 @@ from models.base_model import SQLModel
 
 
 class Weibo(SQLModel):
-    """
-    微博类
-    """
     sql_create = '''
         CREATE TABLE `weibo` (
             `id` INT NOT NULL AUTO_INCREMENT,
@@ -17,7 +14,6 @@ class Weibo(SQLModel):
     def __init__(self, form):
         super().__init__(form)
         self.content = form.get('content', '')
-        # 和别的数据关联的方式, 用 user_id 表明拥有它的 user 实例
         self.user_id = form.get('user_id', None)
 
     # @classmethod

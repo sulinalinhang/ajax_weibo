@@ -76,14 +76,14 @@ def test_session_data():
 
 def test_weibo_date():
     form = dict(
-        content='nana',
+        content='第一条微博',
         user_id=1,
     )
     Weibo.new(form)
 
 def test_comment_date():
     form = dict(
-        content='nana',
+        content='第一条评论',
         user_id=1,
         weibo_id=1
     )

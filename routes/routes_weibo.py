@@ -2,10 +2,7 @@
 from models.weibo import Weibo
 from functools import wraps
 from routes import (
-    # redirect,
-    # GuaTemplate,
     current_user,
-    # html_response,
     login_required,
 )
 
@@ -21,10 +18,6 @@ from utils import log
 
 
 def same_user_required(route_function):
-    """
-    这个函数看起来非常绕，所以你不懂也没关系
-    就直接拿来复制粘贴就好了
-    """
     @wraps(route_function)
     def f():
         log('same_user_required')
@@ -49,9 +42,6 @@ bp = Blueprint('routes_weibo', __name__)
 @bp.route('/weibo/index', methods=['GET'])
 @login_required
 def index():
-    """
-    weibo 首页的路由函数
-    """
     u = current_user()
     weibos = Weibo.all(user_id=u.id)
     # weibos = Weibo.find_all()
@@ -68,9 +58,6 @@ def index():
 @bp.route('/weibo/add', methods=['POST'])
 @login_required
 def add():
-    """
-    用于增加新 weibo 的路由函数
-    """
     u = current_user()
     form = request.form
     form['user_id'] = u.id
@@ -105,14 +92,9 @@ def edit():
 @login_required
 @same_user_required
 def update():
-    """
-    用于增加新 weibo 的路由函数
-    """
     form = request.form
     id = form['id']
     Weibo.update(id, form)
-    # 浏览器发送数据过来被处理后, 重定向到首页
-    # 浏览器在请求新首页的时候, 就能看到新增的数据了
     return redirect('/weibo/index')
 
 

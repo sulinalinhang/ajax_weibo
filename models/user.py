@@ -5,11 +5,6 @@ import hashlib
 
 
 class User(SQLModel):
-    """
-    User 是一个保存用户数据的 model
-    现在只有两个属性 username 和 password
-    """
-
     sql_create = '''
     CREATE TABLE `user` (
         `id` INT NOT NULL AUTO_INCREMENT,

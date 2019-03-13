@@ -20,9 +20,6 @@ import json
 
 
 def random_string():
-    """
-    生成一个随机的字符串
-    """
     seed = 'bdjsdlkgjsklgelgjelgjsegker234252542342525g'
     s = ''
     for i in range(16):
@@ -47,11 +44,6 @@ def current_user():
 
 
 def login_required(route_function):
-    """
-    这个函数看起来非常绕，所以你不懂也没关系
-    就直接拿来复制粘贴就好了
-    """
-
     @functools.wraps(route_function)
     def f():
         log('login_required')

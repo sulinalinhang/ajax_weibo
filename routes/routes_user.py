@@ -18,17 +18,12 @@ from routes import (
 
 from utils import log
 from models.user import User
-# 不要这么 import
-# from xx import a, b, c, d, e, f
 
 user = Blueprint('user', __name__)
 
 
 @user.route('/user/login', methods=['POST'])
 def login():
-    """
-    登录页面的路由函数
-    """
     form = request.form
 
     u, result = User.login(form)
@@ -37,9 +32,6 @@ def login():
     )
 
     if u.role != UserRole.guest:
-        # session 会话
-        # token 令牌
-        # 设置一个随机字符串来当令牌使用
         session_id = random_string()
         form = dict(
             session_id=session_id,
@@ -68,9 +60,6 @@ def login_view():
 
 @user.route('/user/register', methods=['POST'])
 def register():
-    """
-    注册页面的路由函数
-    """
     form = request.form
 
     u, result = User.register(form.to_dict())
